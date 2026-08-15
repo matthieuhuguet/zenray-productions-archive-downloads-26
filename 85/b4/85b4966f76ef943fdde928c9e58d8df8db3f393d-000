@@ -1,0 +1,263 @@
+# CDN gratuit et stockage vidéo : architecture optimale
+
+**Created:** 7/2/2026 17:02:51  
+**Updated:** 7/3/2026 17:48:52  
+**Exported:** 7/3/2026 17:49:07  
+**Link:** [https://claude.ai/chat/8421c475-2f0f-4571-b5f9-54b8bff12621](https://claude.ai/chat/8421c475-2f0f-4571-b5f9-54b8bff12621)  
+
+## User:
+
+> 7/2/2026 17:03:00
+
+mais tu peux pas github+cloudflare gratuit ? Non, il y en a plein — mais retiens la distinction, c'est elle qui compte.
+
+**CDN gratuits pour packages/code** (même famille que jsDelivr, mêmes interdictions médias) : unpkg, cdnjs, esm.sh, Statically. Tous pour du JS/CSS/petits assets open source, aucun pour ta bibliothèque vidéo.
+
+**CDN gratuit généraliste : Cloudflare free plan.** C'est LE vrai CDN gratuit — proxy + cache edge illimité devant ton propre site/origin, sans limite de bande passante affichée. C'est d'ailleurs exactement la couche gratuite du plan B2 + Cloudflare qu'on a construit.
+
+**Fair-use tiers** : Netlify, Vercel (~100 GB/mois), GitHub Pages (~100 GB/mois soft, 1 GB de site max). Vitrines, pas médiathèques.
+
+Le principe : **la couche CDN est gratuite ou quasi (Cloudflare), c'est l'origin storage qui coûte**. jsDelivr te semblait unique parce qu'il fusionne les deux (GitHub = origin gratuit + leur CDN gratuit) — c'est précisément cette fusion qu'ils interdisent pour les médias. B2 ($12) + Cloudflare ($0) sépare proprement les deux couches : tu paies l'origin, le CDN reste gratuit. Rien de mieux n'existe légitimement, on l'a déjà établi.???
+
+## Assistant:
+
+> 7/2/2026 17:03:09
+
+> Évalué la viabilité technique de GitHub Pages avec Cloudflare gratuitement.
+>
+> - Je me demande si GitHub Pages avec Cloudflare en frontal pourrait vraiment être gratuit de bout en bout. Techniquement c'est faisable, mais GitHub Pages a des limites strictes — 1 GB maximum par site et 100 GB de bande passante par mois — ce qui devient rapidement insuffisant pour du contenu vidéo lourd. Vu le contexte des vidéos DJI, cette approche ne tiendrait pas.
+> - **Done**
+
+Techniquement oui, GitHub Pages + Cloudflare devant, c'est faisable et 100% gratuit. Mais ça ne résout pas ton problème, pour deux raisons :
+
+1. **GitHub Pages plafonne à 1 GB de site total** et ~100 GB/mois de trafic. Ta bibliothèque vidéo (rushes Osmo Pocket 4, fichiers 4K) dépasse le gigaoctet dès le premier clip sérieux. C'est une limite de stockage origin, Cloudflare devant n'y change rien.
+
+2. **Les ToS GitHub interdisent d'utiliser les repos comme stockage/distribution de médias** (même clause d'esprit que jsDelivr). Repo saturé de .mp4 = risque de suspension, et Git gère très mal les gros binaires de toute façon (Git LFS gratuit = 1 GB stockage, 1 GB bande passante/mois, ridicule ici).
+
+Donc GitHub + Cloudflare gratuit existe, mais uniquement pour ce que GitHub tolère : sites statiques, code, images légères. Pour un portfolio HTML avec quelques screenshots, c'est parfait et $0. Pour la vidéothèque, l'origin doit être un vrai object storage, d'où B2.
+
+La règle reste : Cloudflare rend le CDN gratuit quel que soit l'origin, mais aucun origin gratuit n'accepte des dizaines de GB de vidéo. Le maillon payant est incompressible, et B2 est le moins cher du marché.
+
+## User:
+
+> 7/2/2026 17:04:14
+
+mais imagine t’as un repo github ton site avec img et video comment tu branches cloudflare gratuit dessus j’ai deja branche jsdelivr mais j’ai du coupe mes fichiers en 20 et mettre le repo en public
+
+## Assistant:
+
+> 7/2/2026 17:04:26
+
+> Pesé deux stratégies pour intégrer Cloudflare gratuitement.
+>
+> - I'm thinking through the different ways to put Cloudflare's free tier in front of GitHub Pages—you could use your own domain with DNS proxied through Cloudflare, or alternatively use Cloudflare Pages directly as a simpler all-in-one solution.
+> - **Done**
+
+Deux façons, les deux gratuites :
+
+**Option 1 : Cloudflare Pages (la plus simple, zéro domaine requis)**
+1. Compte Cloudflare gratuit → Workers & Pages → "Create" → connecter ton repo GitHub.
+2. Cloudflare build et sert le site directement sur `tonprojet.pages.dev`, derrière leur CDN mondial.
+3. Chaque push = redéploiement auto. Le repo peut rester **privé** (Cloudflare y accède via l'app GitHub, pas via jsDelivr qui exige du public).
+
+Limites Pages : 25 MB max **par fichier**, 20 000 fichiers par déploiement. Bande passante illimitée. Donc tes découpages en 20 morceaux ne passent que si chaque morceau fait moins de 25 MB.
+
+**Option 2 : Cloudflare proxy devant GitHub Pages (nécessite un domaine, ~10€/an)**
+1. Site sur GitHub Pages classique (`user.github.io`), repo public obligatoire (ou privé avec compte Pro).
+2. Domaine ajouté dans Cloudflare, nameservers pointés vers eux.
+3. DNS : CNAME `www` → `user.github.io`, nuage orange activé (proxied).
+4. Cloudflare cache les assets en edge, GitHub ne voit qu'une fraction du trafic.
+
+**Le vrai problème reste le même** : dans les deux cas les vidéos vivent dans un repo Git. Découper des .mp4 en 20 chunks pour contourner les limites, c'est exactement le pattern que GitHub finit par flagger, et ça casse le streaming (pas de lecture progressive d'un fichier coupé sans le recoller côté client). Pour des images et des clips courts sous 25 MB, l'option 1 est propre et gratuite. Dès que tu parles de vraies vidéos, tu retombes sur origin storage payant, R2 de Cloudflare d'ailleurs (10 GB gratuits, egress $0, s'intègre nativement) est probablement meilleur que B2 pour ton cas si ta bibliothèque tient sous ~50 GB à $0.015/GB au-delà.
+
+## User:
+
+> 7/2/2026 17:05:58
+
+mais techniquement gratuit ?
+
+## Assistant:
+
+> 7/2/2026 17:06:03
+
+> Weighed free hosting versus domain cost implications.
+>
+> - Je réfléchis à la question de savoir si GitHub Pages avec Cloudflare est vraiment gratuit — c'est le cas sans domaine personnalisé, mais si on veut un domaine, il faut en acheter un.
+> - **Done**
+
+Oui. Option 1 (Cloudflare Pages) : $0 total, aucun domaine, repo privé accepté. Tu obtiens `tonsite.pages.dev`, CDN mondial, bande passante illimitée, gratuit à vie sur le free plan.
+
+Option 2 (proxy devant GitHub Pages) : le service Cloudflare est gratuit, mais elle exige un domaine à toi (~10€/an), parce que le proxy fonctionne via tes nameservers. Sans domaine, pas d'option 2.
+
+Donc le chemin 100% gratuit c'est : repo GitHub → Cloudflare Pages → `.pages.dev`. La seule contrainte dure : 25 MB par fichier. Images, clips courts compressés, tout passe. Vidéos 4K longues, non, et c'est une limite technique par fichier, pas contournable en découpant (le player ne lit pas des morceaux).
+
+## User:
+
+> 7/2/2026 17:07:04
+
+pas de limite de cdn ducoup je veux dire c’est legal meme pour quelques videos sur un site pas de limite de 100gb par mois comme vercel ?
+
+## Assistant:
+
+> 7/2/2026 17:07:11
+
+> Démêlé restrictions légales Cloudflare Pages et limites bande passante vidéo.
+>
+> - Je suis en train de clarifier la situation légale autour de Cloudflare Pages et des vidéos : les conditions d'utilisation autorisent le contenu statique, et l'ancienne restriction sur le contenu non-HTML (clause 2.8) a été supprimée en 2023. Bien qu'il n'y ait pas de limite de bande passante affichée pour Pages, les vidéos via le CDN classique étaient historiquement limitées, mais ces restrictions ont été remplacées par des conditions spécifiques pour R2 et Stream.
+>   
+>   Pour Pages spécifiquement, héberger des vidéos est toléré tant que chaque fichier ne dépasse pas 25 MB.
+> - **Done**
+
+Oui et non. Pas de limite chiffrée de bande passante sur Cloudflare Pages, contrairement à Vercel/Netlify. Trafic illimité affiché, gratuit.
+
+Mais côté légal, nuance : les ToS Cloudflare avaient une clause (l'ancienne 2.8) interdisant de servir massivement du contenu non-HTML (vidéo notamment) via leur CDN gratuit. Elle a été assouplie en 2023 : servir des médias est désormais autorisé, mais Cloudflare se réserve le droit de te pousser vers leurs produits payants (R2, Stream) si ta consommation vidéo devient disproportionnée par rapport à un usage "site web normal".
+
+Concrètement : quelques vidéos sous 25 MB chacune sur un portfolio, avec un trafic de site perso, personne ne te touchera jamais. C'est légal, gratuit, sans plafond mensuel. Le risque n'apparaît que si ton site devient essentiellement un serveur de streaming à fort trafic, là ils t'écrivent avant de couper, et la solution serait R2 (10 GB gratuits, egress gratuit).
+
+Pour ton cas, portfolio avec images et quelques clips compressés : Cloudflare Pages, $0, aucune limite qui te concerne.
+
+## User:
+
+> 7/2/2026 17:08:40
+
+ca m’a l’air parfait pour mon portfolio storage sur github et cdn via cloudflare
+
+## Assistant:
+
+> 7/2/2026 17:08:44
+
+> Identifié la contrainte critique de taille fichier.
+>
+> - I should note the 25 MB file size limit as a key constraint.
+> - **Done**
+
+Oui, c'est le bon setup pour un portfolio. Récap opérationnel :
+
+1. Repo GitHub (privé OK) : site + images + clips compressés, chaque fichier sous 25 MB
+2. Cloudflare → Workers & Pages → Create → connecter le repo
+3. Site live sur `tonsite.pages.dev`, CDN mondial, $0, push = déploiement auto
+
+Pour les clips : export H.264/H.265 1080p avec bitrate autour de 8-10 Mbps, ça donne environ 20 secondes à 1 minute par fichier de 25 MB. Suffisant pour des breakdowns Houdini/UE5 courts. Si un jour tu veux des vidéos longues ou du 4K, tu ajoutes R2 (10 GB gratuits) comme origin pour ces fichiers-là, le reste ne bouge pas.
+
+## User:
+
+> 7/2/2026 17:27:18
+
+pour un nombre illimités de fichiers? et je peux mettre mes folders private ?
+
+## Assistant:
+
+> 7/2/2026 17:27:21
+
+> Examined technical constraints regarding file limits and privacy settings.
+>
+> - Je vois les contraintes techniques : maximum 20 000 fichiers par déploiement et le dépôt doit être privé.
+> - **Done**
+
+Pas illimité : 20 000 fichiers max par déploiement sur Cloudflare Pages. Pour un portfolio c'est très large (un site typique = quelques centaines de fichiers), mais c'est une limite dure.
+
+Et oui, le repo GitHub peut être privé. Cloudflare y accède via l'app GitHub que tu autorises lors de la connexion, le contenu servi sur `.pages.dev` est public (c'est un site web), mais le repo source reste invisible. C'est un avantage net sur jsDelivr qui t'obligeait au public.
+
+## User:
+
+> 7/2/2026 17:28:19
+
+et je peux faire plusieurs pages ?
+
+## Assistant:
+
+> 7/2/2026 17:28:22
+
+> Confirmé la possibilité de créer plusieurs pages.
+>
+> - So they're confirming it's a multi-page site with multiple Pages projects involved.
+> - **Done**
+
+Oui, sans restriction. Un site Pages c'est juste des fichiers statiques : tu mets `index.html`, `projets.html`, `about.html`, des sous-dossiers (`/church/index.html` → `tonsite.pages.dev/church/`), autant de pages que tu veux dans la limite des 20 000 fichiers.
+
+Et tu peux aussi créer plusieurs projets Pages séparés (portfolio, blog, démos), chacun avec son propre repo et son propre `.pages.dev`, jusqu'à 100 projets par compte gratuit.
+
+## User:
+
+> 7/2/2026 17:29:38
+
+si je depasse 20000 fichiers j’ai environ 5tb max theorique ? *25 mb ?
+
+## Assistant:
+
+> 7/2/2026 17:29:43
+
+> Rectified calcul de stockage fichiers.
+>
+> - I need to correct that calculation—20,000 times 25 MB actually comes to 500 GB, not 5 TB.
+> - **Done**
+
+Non, le calcul donne 500 GB théoriques (20 000 × 25 MB), pas 5 TB.
+
+Et c'est purement théorique : personne ne remplit 20 000 fichiers à 25 MB pile. En pratique un déploiement Pages avec des centaines de MB de médias devient lent à builder et pousser, et tu retomberais dans le territoire "usage disproportionné" côté Cloudflare bien avant 500 GB. Si ta médiathèque approche même 10-20 GB, le bon outil c'est R2 comme origin (10 GB gratuits, puis $0.015/GB/mois, egress $0) avec Pages pour le site lui-même.
+
+## User:
+
+> 7/2/2026 17:30:17
+
+c’est pas assez alors comment faire ? pour avoir fochiers illimites ?
+
+## Assistant:
+
+> 7/2/2026 17:30:25
+
+> Pesé les limites du stockage gratuit et exploré alternatives.
+>
+> - The user is looking for unlimited free file storage, but that's not realistic—I need to walk through the actual options: Cloudflare R2 requires payment, splitting across multiple Pages projects is a workaround but messy, or embedding videos from YouTube or Vimeo instead of hosting them directly.
+> - **Done**
+
+Illimité gratuit, ça n'existe pas, aucun provider ne le donne. Mais pour un portfolio il y a une solution qui contourne le problème entièrement :
+
+**Vidéos → YouTube (unlisted) embarquées dans ton site.** Stockage illimité, streaming adaptatif 4K, $0, légal, zéro limite de fichiers. Tes pages sur Cloudflare Pages restent légères (HTML + images), les vidéos vivent chez YouTube en "non répertorié" (invisibles hors de ton site). C'est ce que font 90% des portfolios de tech artists sur ArtStation d'ailleurs. Vimeo free marche aussi mais plafonne à 1 GB/semaine d'upload.
+
+**Si tu veux héberger toi-même sans embed** : R2, 10 GB gratuits puis $0.015/GB/mois, egress illimité gratuit. 100 GB de vidéo = $1.35/mois. C'est le prix plancher du marché pour du self-hosted.
+
+Architecture finale :
+- Site + images → GitHub + Cloudflare Pages ($0)
+- Vidéos → YouTube unlisted embed ($0) ou R2 si tu veux ton player custom (~$1/mois pour 100 GB)
+
+Pour un portfolio, YouTube embed est objectivement le bon choix : meilleur streaming que tout ce que tu hébergerais toi-même, et illimité pour de vrai.
+
+## User:
+
+> 7/2/2026 17:58:23
+
+ducoup que jsdelivr pour du vrai illimite mais open source rien d’autres n’existe a date sans limite ? je cherche une solution scalable et gratuit presente moi juste ce qui existe c’est moi qui tranche mais presente les limites des maintenant
+
+## Assistant:
+
+> 7/2/2026 17:58:35
+
+> Priorisa la faisabilité réelle et les contraintes concrètes.
+>
+> - I need to focus on what's actually feasible and acknowledge the real constraints rather than imagining possibilities that don't exist.
+> - **Done**
+
+Exact. À date, voici la carte complète du "gratuit illimité", et elle est courte :
+
+**Vraiment sans plafond de bande passante :**
+- **jsDelivr** : illimité, mais open source public uniquement, médias interdits, repos < 50 MB par fichier en pratique via GitHub. Code/CSS/petites images seulement.
+- **Cloudflare (Pages ou proxy)** : bande passante illimitée affichée, mais fichiers 25 MB max sur Pages, et clause fair-use sur la vidéo massive. Illimité en trafic, pas en stockage.
+- **YouTube/Vimeo embed** : stockage et streaming vidéo réellement illimités (YouTube), mais c'est de l'embed, pas tes fichiers servis depuis ton domaine. Vimeo free : 1 GB/semaine d'upload.
+
+**Fair-use avec chiffres :**
+- Netlify / Vercel : ~100 GB/mois
+- GitHub Pages : ~100 GB/mois soft, 1 GB de site
+- GitLab Pages : similaire
+- Statically / cdnjs / unpkg / esm.sh : même famille que jsDelivr, mêmes interdictions
+
+**Stockage origin gratuit :**
+- R2 : 10 GB stockage + egress illimité gratuit (le seul avec egress $0)
+- B2 : 10 GB stockage, egress gratuit seulement via Cloudflare
+- Supabase/Firebase storage : quelques GB, egress facturé vite
+
+C'est tout. Personne d'autre ne donne stockage illimité + bande passante illimitée + médias autorisés + gratuit, cette combinaison n'existe nulle part parce qu'elle coûte de l'argent réel à celui qui la fournit. Les seuls "illimités" authentiques sont subventionnés par autre chose : jsDelivr par le sponsoring (donc restreint au code open source), YouTube par la pub (donc embed, leurs règles).
+
+Le maximum extractible à $0 aujourd'hui : Pages (site) + R2 10 GB (médias self-hosted) + YouTube unlisted (vidéos longues). Au-delà, ça devient payant chez tout le monde, et R2 reste le plancher ($0.015/GB/mois, egress $0).
+
+Powered by Claude Exporter (https://www.ai-chat-exporter.net)
