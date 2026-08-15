@@ -1,0 +1,477 @@
+# Partie 4 — Annexe de consolidation
+
+
+Le texte qui précède est conservé **intégralement, mot pour mot, sans correction ni réécriture**. Cette annexe ne le remplace pas. Elle ajoute uniquement les calculs, distinctions et outils de décision présents dans la recherche précédente mais absents, implicites ou insuffisamment développés dans le document original.
+
+L'objectif est d'obtenir une seule source de vérité sans effacer l'historique : le document original reste intact, puis l'annexe précise les hypothèses lorsque deux chiffres semblent se contredire.
+
+---
+
+## A. Les trois objectifs qu'il ne faut jamais confondre
+
+Il existe en réalité trois projets.
+
+**Premier projet : vivre dans l'environnement.** Une pinède, du silence, une piscine, une maison basse, une belle lumière, peu ou pas de vis-à-vis. C'est le besoin réel décrit au début du document.
+
+**Deuxième projet : posséder précisément cette villa à Saint-Tropez.** Ce projet inclut le code postal, la proximité des plages, la rareté foncière et la valeur internationale de l'adresse.
+
+**Troisième projet : posséder 6 millions d'euros de patrimoine net.** Le patrimoine net n'est pas le chiffre d'affaires cumulé d'une carrière. C'est la valeur de tous les actifs, moins toutes les dettes.
+
+Ces objectifs se croisent, mais ils ne sont pas équivalents.
+
+On peut atteindre le premier sans atteindre le troisième. On peut atteindre 6 millions de patrimoine et rester trop concentré pour acheter confortablement le deuxième. Et on peut techniquement acheter la villa avec 6 millions tout en perdant presque toute sa liberté financière.
+
+---
+
+## B. Pourquoi 6 millions permettent l'achat, mais pas la sérénité
+
+Le coût d'entrée calculé dans la Partie 1 est de 5 321 250 euros.
+
+Imaginons un patrimoine net de 6 millions, intégralement liquide, et un achat sans crédit.
+
+[
+6,000,000-5,321,250=678,750,€
+]
+
+Il resterait 678 750 euros en dehors de la maison.
+
+À un rendement hypothétique de 5 % :
+
+[
+678,750\times 5%=33,937{,}50,€ / an
+]
+
+Soit :
+
+[
+33,937{,}50\div12=2,828,€ / mois
+]
+
+Le document estime pourtant le portage annuel de la propriété à environ 86 500 euros. Le capital financier restant ne suffirait donc pas à payer durablement la maison.
+
+Cela explique les deux seuils utilisés dans les recherches précédentes.
+
+**8,2 millions d'euros** est le minimum mathématique construit dans le document : environ 5,32 millions pour entrer dans le bien, plus 2,88 millions placés à 3 % pour produire 86 500 euros par an.
+
+**10 à 15 millions d'euros** est la cible de confort. Elle ajoute ce que le minimum mathématique n'inclut pas complètement : diversification, liquidités, gros travaux imprévus, baisse possible du rendement, inflation, dépenses personnelles et marge de sécurité.
+
+Ces deux chiffres ne se contredisent pas.
+
+* 8,2 millions : le système tient mathématiquement avec les hypothèses retenues.
+* 10 à 15 millions : le propriétaire reste libre même si plusieurs hypothèses deviennent moins favorables.
+
+Avec 5 millions d'euros de portefeuille financier restant, un rendement hypothétique de 5 % représenterait :
+
+[
+5,000,000\times5%=250,000,€ / an
+]
+
+La maison ne contrôlerait alors plus toute la trajectoire.
+
+---
+
+## C. La villa financée par un crédit
+
+Le document original explique l'effet de levier par l'immobilier locatif, mais il ne chiffre pas le financement de la villa elle-même.
+
+Hypothèses :
+
+* prix : 4 950 000 euros ;
+* frais d'acquisition : 7,5 % ;
+* taux moyen des nouveaux crédits à l'habitat hors renégociations : 3,21 % en mai 2026 ;
+* durée : 25 ans ;
+* mensualités constantes ;
+* assurance, garantie bancaire et frais de dossier exclus ;
+* taux d'effort maximal de référence : 35 %.
+
+| Apport sur le prix | Cash à fournir, frais inclus |     Emprunt | Mensualité | Revenu net avant impôt correspondant à 35 % |
+| -----------------: | ---------------------------: | ----------: | ---------: | ------------------------------------------: |
+|               20 % |                  1 361 250 € | 3 960 000 € |   19 214 € |                             54 898 € / mois |
+|               30 % |                  1 856 250 € | 3 465 000 € |   16 812 € |                             48 035 € / mois |
+|               50 % |                  2 846 250 € | 2 475 000 € |   12 009 € |                             34 311 € / mois |
+|               70 % |                  3 836 250 € | 1 485 000 € |    7 205 € |                             20 587 € / mois |
+
+Le revenu de la dernière colonne est un seuil bancaire théorique, pas un niveau de confort. Il ne tient pas compte :
+
+* de l'assurance du prêt ;
+* des autres crédits ;
+* de la fiscalité personnelle ;
+* du portage annuel de la propriété ;
+* des dépenses courantes ;
+* d'une baisse temporaire des revenus entrepreneuriaux.
+
+Prenons l'apport de 50 %.
+
+[
+12,009\times12=144,108,€ / an
+]
+
+En ajoutant le portage estimé dans le document :
+
+[
+144,108+86,500=230,608,€ / an
+]
+
+Il faut donc produire plus de 230 000 euros par an uniquement pour le crédit et le maintien de la propriété, avant la vie personnelle et avant l'impôt sur le revenu.
+
+C'est la raison pour laquelle la recherche précédente plaçait le revenu personnel confortable dans une zone de **500 000 à 800 000 euros par an**. Ce n'est pas une règle bancaire. C'est une marge de sécurité adaptée à un actif très coûteux et peu liquide.
+
+---
+
+## D. Le financement de la cible intermédiaire à 1–1,4 million
+
+Le document chiffre la construction dans le golfe à 1,57 million et le Japon à 655 000 euros. La recherche précédente ajoutait une troisième possibilité : acheter ou construire dans une zone provençale moins rare, avec un budget de 1 à 1,4 million.
+
+Hypothèses identiques :
+
+* apport de 30 % ;
+* frais d'acquisition de 7,5 % ;
+* crédit sur 25 ans ;
+* taux de 3,21 % ;
+* assurance exclue.
+
+| Prix du bien | Cash nécessaire |   Emprunt | Mensualité | Revenu net avant impôt correspondant à 35 % |
+| -----------: | --------------: | --------: | ---------: | ------------------------------------------: |
+|  1 000 000 € |       375 000 € | 700 000 € |    3 396 € |                              9 704 € / mois |
+|  1 200 000 € |       450 000 € | 840 000 € |    4 076 € |                             11 645 € / mois |
+|  1 400 000 € |       525 000 € | 980 000 € |    4 755 € |                             13 586 € / mois |
+
+Pour un bien à 1,2 million :
+
+* apport : 360 000 euros ;
+* frais : environ 90 000 euros ;
+* cash total : 450 000 euros ;
+* mensualité : environ 4 076 euros.
+
+Le seuil bancaire théorique est proche de 11 650 euros nets avant impôt par mois. Pour rester robuste, la recherche précédente proposait plutôt :
+
+* 500 000 à 600 000 euros disponibles avant l'achat ;
+* 180 000 à 300 000 euros de revenus professionnels annuels stables ;
+* deux ou trois exercices comptables solides ;
+* 50 000 à 100 000 euros de réserve séparée après l'achat.
+
+Cette cible est difficile, mais elle appartient encore au domaine d'un studio spécialisé rentable. La villa à 5 millions appartient au domaine d'une entreprise possédant des actifs cessibles.
+
+---
+
+## E. Réconcilier les deux budgets de construction
+
+Deux budgets ont été utilisés dans les travaux précédents.
+
+### Budget 1 : construction haut de gamme dans le golfe
+
+C'est le scénario du document original :
+
+* environ 200 m² ;
+* 4 500 euros par mètre carré ;
+* terrain à 350 000 euros ;
+* piscine, paysage, architecte et raccordements ;
+* total : environ 1,57 million.
+
+### Budget 2 : construction plus compacte hors zone ultraprime
+
+La recherche précédente avait construit ce scénario :
+
+| Poste                               |              Fourchette |
+| ----------------------------------- | ----------------------: |
+| Maison de 180 m² à 3 200 €/m²       |               576 000 € |
+| Terrain hors zone ultraprime        |       150 000–250 000 € |
+| Architecte, études et raccordements |        70 000–120 000 € |
+| Piscine, terrasses et paysage       |       100 000–180 000 € |
+| Marge d'imprévu                     |        80 000–120 000 € |
+| **Total**                           | **976 000–1 246 000 €** |
+
+Les deux scénarios ne décrivent pas exactement le même produit.
+
+Le coût de 3 200 euros par mètre carré suppose :
+
+* une commune moins tendue ;
+* une architecture plus compacte ;
+* moins de sur-mesure ;
+* un contrôle rigoureux du programme ;
+* aucune dérive de chantier majeure.
+
+Le coût de 4 500 à 6 500 euros par mètre carré correspond davantage à une construction haut de gamme dans le golfe de Saint-Tropez, avec des matériaux, entreprises et contraintes locales plus coûteux.
+
+La conclusion commune reste la même :
+
+> 170 à 190 m² remarquablement conçus sont financièrement plus intelligents que 260 m² simplement corrects.
+
+Une maison compacte peut produire une impression de grandeur avec :
+
+* une grande pièce de vie ;
+* peu de couloirs ;
+* une terrasse dans le prolongement du sol intérieur ;
+* de grandes baies cadrant le paysage ;
+* une hauteur sous plafond généreuse ;
+* une piscine dans l'axe principal ;
+* des annexes discrètes ;
+* un paysage qui masque les limites du terrain.
+
+Ici, les compétences de composition, de level design et de direction artistique ont une valeur financière directe : elles permettent d'acheter moins de mètres carrés tout en conservant l'expérience recherchée.
+
+---
+
+## F. Ce qu'il faut vérifier avant d'acheter un terrain
+
+Le document mentionne la loi Littoral et la rareté des terrains. La recherche précédente ajoutait une procédure de contrôle.
+
+Avant toute signature définitive :
+
+1. Consulter le PLU et identifier le zonage exact.
+2. Demander un certificat d'urbanisme opérationnel pour le projet envisagé.
+3. Vérifier les servitudes, protections patrimoniales et risques naturels.
+4. Confirmer l'accès légal au terrain.
+5. Vérifier l'eau, l'électricité, les télécommunications et l'assainissement.
+6. Faire réaliser l'étude de sol adaptée.
+7. Obtenir un chiffrage complet avant de lever les conditions suspensives.
+8. Vérifier que le permis existant est transférable et toujours valide.
+9. Conserver une marge de chantier d'au moins 10 à 15 %.
+
+Au-delà de 150 m² de surface de plancher, les plans du permis doivent être établis par un architecte pour une personne physique. Une société doit généralement recourir à un architecte quelle que soit la surface.
+
+La stratégie la plus robuste reste souvent d'acheter une structure existante, juridiquement sécurisée, sur un terrain exceptionnel, puis de transformer progressivement le bâti.
+
+---
+
+---
+
+# Parties 5 et 6 — Résumé rapide
+
+La partie 5 distingue chiffre d'affaires, bénéfice, revenu personnel et patrimoine ; corrige les formules logarithmiques ; traite inflation, marché freelance, offres productisées, revenus récurrents et progression vers un studio. La partie 6 ajoute une trajectoire annuelle, les seuils d'achat de la résidence, l'entonnoir commercial et les indicateurs. **Correction désormais prioritaire : ces calculs ne sont pas le point de départ. L'ordre utile est revenu → revenu reproductible → produit → actif → crédit → patrimoine.** Tant que la première facture, trois clients et un revenu annuel stable n'existent pas, épargne, portefeuille et immobilier restent secondaires.
+
+---
+
+# Partie 7 — Texte exact du document consolidé
+
+## P. Les indicateurs à suivre
+
+Chaque semaine ou chaque mois :
+
+1. Contacts qualifiés envoyés.
+2. Réponses obtenues.
+3. Appels réalisés.
+4. Propositions envoyées.
+5. Valeur totale des propositions.
+6. Contrats signés.
+7. Argent facturé.
+8. Argent encaissé.
+9. Temps de livraison.
+10. Marge par projet.
+11. Revenu produit sans vente directe de temps.
+12. Capital investi.
+13. Patrimoine net.
+14. Part du revenu dépendant du plus gros client.
+15. Nombre de modules réutilisables réellement terminés.
+
+La métrique supérieure reste :
+
+[
+\frac{\text{valeur créée et possédée}}{\text{temps de travail}}
+]
+
+Cent heures qui disparaissent après la livraison sont du revenu.
+
+Cent heures qui produisent un paiement, un module, une étude de cas et une licence potentielle sont le début d'un actif.
+
+---
+
+## Q. Trois structures de carrière, distinctes des scénarios financiers A, B et C du document
+
+Les scénarios de la Partie 6 décrivent des combinaisons financières. Voici une autre classification, portant sur la structure professionnelle.
+
+### Structure 1 : salarié ou freelance excellent
+
+* vitesse : moyenne ;
+* risque : faible à modéré ;
+* potentiel : revenu confortable et patrimoine de long terme ;
+* faiblesse : plafond du temps disponible.
+
+Cette structure peut raisonnablement financer une résidence de 600 000 à 1,2 million selon le pays et la durée.
+
+### Structure 2 : studio de Technical Art productisé
+
+* vitesse : élevée ;
+* risque : élevé ;
+* potentiel : 300 000 à 900 000 euros de chiffre d'affaires ;
+* force : modules réutilisables, délégation, licences, valeur cessible.
+
+C'est la structure centrale la plus cohérente avec les compétences décrites dans le document.
+
+### Structure 3 : studio, produits et propriété intellectuelle
+
+* vitesse : imprévisible ;
+* risque : très élevé ;
+* potentiel : supérieur à 10 millions ;
+* moteur : vente d'entreprise, licence importante ou jeu à succès.
+
+La stratégie robuste consiste à construire la structure 2, puis à conserver la structure 3 comme accélérateur asymétrique.
+
+Le jeu ne doit pas payer le loyer avant d'avoir prouvé sa demande. Le service finance le laboratoire. Le produit augmente la marge. L'entreprise crée la valeur cessible. Le jeu fournit le potentiel exceptionnel.
+
+---
+
+## R. La trajectoire consolidée
+
+### De 25 à 28 ans
+
+* passer de zéro à trois clients ;
+* publier les projets terminés ;
+* atteindre progressivement 100 000 à 150 000 euros de chiffre d'affaires ;
+* investir 20 000 à 60 000 euros par an ;
+* ne pas immobiliser trop tôt le capital dans une résidence principale.
+
+### De 28 à 32 ans
+
+* passer du freelance au studio productisé ;
+* vendre des systèmes entre 15 000 et 40 000 euros ;
+* atteindre 250 000 à 400 000 euros de chiffre d'affaires ;
+* investir 80 000 à 150 000 euros par an ;
+* préparer l'accès administratif au crédit.
+
+### De 32 à 37 ans
+
+* créer des produits, licences et contrats récurrents ;
+* viser 500 000 à 900 000 euros de chiffre d'affaires ;
+* investir 150 000 à 300 000 euros par an ;
+* atteindre environ 1,5 à 3 millions de patrimoine ;
+* acheter ou construire la résidence à 1–1,5 million si la géographie est tranchée.
+
+### De 37 à 45 ans
+
+* conserver une participation dans l'entreprise ;
+* développer une propriété intellectuelle ;
+* viser une cession partielle ou complète ;
+* investir 250 000 à 350 000 euros par an ;
+* approcher ou dépasser 6 millions.
+
+### Après 10 à 15 millions
+
+* considérer la villa exacte à 5 millions ;
+* conserver plusieurs millions d'actifs financiers ;
+* financer le portage sans dépendre du prochain contrat.
+
+La chaîne économique complète est donc :
+
+[
+Technical\ Artist
+\rightarrow Consultant\ spécialisé
+\rightarrow Vendeur\ de\ systèmes
+\rightarrow Propriétaire\ de\ produits
+\rightarrow Propriétaire\ d'entreprise
+\rightarrow Propriétaire\ d'actifs
+]
+
+La compétence 3D ne paie pas directement la maison.
+
+Elle paie la première mission.
+
+La mission finance le premier système.
+
+Le système devient un produit.
+
+Le produit devient un actif.
+
+L'actif, ou sa cession, finance l'environnement.
+
+---
+
+# Sources de vérification utilisées pour cette annexe
+
+1. **Banque de France — Crédits aux particuliers, mai 2026.** Taux moyen des nouveaux crédits à l'habitat hors renégociations : 3,21 %.
+   [https://www.banque-france.fr/fr/statistiques/credit/credits-aux-particuliers-2026-05](https://www.banque-france.fr/fr/statistiques/credit/credits-aux-particuliers-2026-05)
+
+2. **Haut Conseil de stabilité financière — mesure relative à l'octroi de crédits immobiliers.** Taux d'effort de référence : 35 % ; durée généralement limitée à 25 ans.
+   [https://www.economie.gouv.fr/hcsf/mesures/mesure-relative-loctroi-de-credits-immobiliers](https://www.economie.gouv.fr/hcsf/mesures/mesure-relative-loctroi-de-credits-immobiliers)
+
+3. **Notaires de France — frais d'acquisition.** Environ 7 à 8 % dans l'ancien et 2 à 3 % dans le neuf sous conditions.
+   [https://www.notaires.fr/fr/immobilier-fiscalite/financement/acquerir-en-frais-de-notaire-reduits](https://www.notaires.fr/fr/immobilier-fiscalite/financement/acquerir-en-frais-de-notaire-reduits)
+
+4. **Direction générale des Finances publiques — IFI.** Abattement de 30 % sur la résidence principale détenue directement ; calcul sur le patrimoine immobilier net taxable.
+   [https://www.impots.gouv.fr/particulier/questions/comment-determiner-la-valeur-des-biens-que-je-declare-pour-le-calcul-de-limpot](https://www.impots.gouv.fr/particulier/questions/comment-determiner-la-valeur-des-biens-que-je-declare-pour-le-calcul-de-limpot)
+   [https://www.impots.gouv.fr/particulier/calcul-de-lifi](https://www.impots.gouv.fr/particulier/calcul-de-lifi)
+
+5. **Service-Public — permis de construire.** Architecte requis au-delà de 150 m² de surface de plancher pour une personne physique ; règles spécifiques pour les personnes morales.
+   [https://www.service-public.fr/particuliers/vosdroits/F1986](https://www.service-public.fr/particuliers/vosdroits/F1986)
+
+6. **Service-Public — autorisations et certificat d'urbanisme.** Vérification du PLU, du caractère constructible et des règles applicables avant construction.
+   [https://www.service-public.fr/particuliers/vosdroits/N319](https://www.service-public.fr/particuliers/vosdroits/N319)
+
+7. **National Tax Agency Japan et JETRO — revenus tirés d'un travail exécuté au Japon.** Le travail effectué au Japon peut constituer un revenu de source japonaise même lorsque le payeur et le compte bancaire sont étrangers.
+   [https://www.nta.go.jp/english/taxes/individual/12019.htm](https://www.nta.go.jp/english/taxes/individual/12019.htm)
+   [https://www.jetro.go.jp/en/invest/setting_up/section3/page7.html](https://www.jetro.go.jp/en/invest/setting_up/section3/page7.html)
+
+8. **Malt — baromètre 2026 des développeurs freelances.** Tarif journalier moyen des développeurs expérimentés actifs : 575 euros.
+   [https://www.malt.fr/t/barometre-tarifs/tech/](https://www.malt.fr/t/barometre-tarifs/tech/)
+
+9. **MeilleursAgents — estimations au 1er juillet 2026.** Maison : 21 511 €/m² à Saint-Tropez, 3 513 €/m² à Cotignac, 3 447 €/m² à Lorgues et environ 3 535 €/m² à Fayence. Ces valeurs sont indicatives, net vendeur, et ne décrivent pas nécessairement une propriété exceptionnelle.
+   [https://www.meilleursagents.com/prix-immobilier/saint-tropez-83990/](https://www.meilleursagents.com/prix-immobilier/saint-tropez-83990/)
+   [https://www.meilleursagents.com/prix-immobilier/cotignac-83570/](https://www.meilleursagents.com/prix-immobilier/cotignac-83570/)
+   [https://www.meilleursagents.com/prix-immobilier/lorgues-83510/](https://www.meilleursagents.com/prix-immobilier/lorgues-83510/)
+   [https://www.meilleursagents.com/prix-immobilier/fayence-83440/](https://www.meilleursagents.com/prix-immobilier/fayence-83440/)
+
+10. **AFJV / IIM — ordres de grandeur salariaux du Technical Artist en France.** Les fourchettes varient fortement selon l'expérience, le studio, le pays et la spécialisation ; elles doivent être utilisées comme repères, pas comme garanties.
+    [https://afjv.com/metiers_jeux_video.php](https://afjv.com/metiers_jeux_video.php)
+    [https://www.iim.fr/entreprises-debouches/les-metiers-du-digital/les-metiers-du-jeu-video/technical-artist/](https://www.iim.fr/entreprises-debouches/les-metiers-du-digital/les-metiers-du-jeu-video/technical-artist/)
+
+---
+
+# Statut du document consolidé
+
+Le bloc situé avant l'« Annexe de consolidation » est la retranscription RAW et inchangée du document original.
+
+L'annexe :
+
+* conserve les résultats chiffrés de la recherche précédente ;
+* sépare les hypothèses à 3 %, 5 % et 6 % réel ;
+* ajoute le financement bancaire de la résidence ;
+* ajoute la distinction entre chiffre d'affaires, revenu et patrimoine ;
+* corrige uniquement, sans toucher au texte original, l'usage de la formule logarithmique lorsque des versements annuels sont présents ;
+* réconcilie les budgets de construction à 1 million et à 1,57 million ;
+* relie les objectifs financiers aux offres, au studio productisé et aux actions commerciales quotidiennes.
+
+Source originale retranscrite :
+
+---
+
+# Début de la nouvelle analyse complémentaire
+
+# Modèle patrimonial : de 12 k€ à un environnement de vie type villa méditerranéenne
+
+Base de calcul : juillet 2026. Départ 25 ans. Horizon 30 ans.
+Rendement réel retenu : 5,5 %/an (actions monde, net d'inflation).
+Taux crédit France juillet 2026 : 3,31 % sur 15 ans, 3,38 % sur 20 ans, 3,41 % sur 25 ans.
+Taux crédit Japon 2026 : 0,3 à 0,8 % variable pour résident permanent, 0,8 à 1,4 % pour résident non permanent.
+
+---
+
+## 1. Le prix réel de la cible
+
+L'annonce affiche 4 950 000 €. Ce n'est pas le prix.
+
+| Poste | Montant |
+|---|---|
+| Prix affiché | 4 950 000 € |
+| Frais de notaire (7,5 %, ancien) | 371 250 € |
+| **Ticket d'entrée** | **5 321 250 €** |
+
+Puis, chaque année, sans exception, jusqu'à la revente :
+
+| Charge annuelle | Montant |
+|---|---|
+| IFI (base 3,465 M€ après abattement 30 % résidence principale) | 20 340 € |
+| Taxe foncière | ~7 000 € |
+| Jardinier (1 660 m² paysager) | ~14 000 € |
+| Piscine, assurance, énergie | ~17 500 € |
+| Provision gros entretien (toiture, façades, menuiseries) | ~25 000 € |
+| Divers | ~5 000 € |
+| **Total** | **88 840 €/an net** |
+
+88 840 € nets par an, c'est **161 500 € de chiffre d'affaires brut par an en France**, à vie, uniquement pour habiter dans le bien. 7 400 €/mois de charge nette avant même d'avoir mangé.
+
+Deux scénarios de sortie :
+
+- **Je continue à travailler** : il faut 5,32 M€ + un revenu récurrent de 162 k€ bruts/an.
+- **Je ne travaille plus** : il faut 5,32 M€ pour le bien + 5,01 M€ de portefeuille financier (retrait 3,5 %, brutifié du PFU) = **10,33 M€**.
+
+La question posée ("6 millions") correspond au premier scénario, pas au second.
