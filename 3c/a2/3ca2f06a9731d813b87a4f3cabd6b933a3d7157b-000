@@ -1,0 +1,86 @@
+---
+name: think-of-everything
+description: Run a systematic "think of everything" impact and premortem pass before or after implementing a code change, feature, or architecture decision. Reads the request four ways (literal, inverse, adjacent, reframed), traces every real interdependency in the actual codebase by grepping or searching it directly instead of guessing from memory, then checks the change against a fixed impact-surface list covering data and state, concurrency, quotas, security, error handling, backward compatibility, performance, cost, observability, UX edge cases, tests, and rollback. Use this whenever the user says "pense à tout", "think of everything", "qu'est-ce que j'ai oublié", "what am I missing", asks what a change might break, or wants a premortem, dependency check, or impact analysis. Also trigger proactively, even without the exact phrase, right before shipping anything that touches shared state, storage or quotas, concurrency, auth or permissions, payments, or a public API/route.
+---
+
+# Think of Everything (Pense à Tout)
+
+A forced-completeness pass for code and technical or product decisions. Normal Q&A answers the question asked and stops. This skill answers the question asked, its opposite, and the ones nobody asked, then checks the answer against the actual code instead of memory or plausible-sounding guesses.
+
+## When this triggers
+
+Explicit: "pense à tout", "think of everything", "qu'est-ce que j'ai oublié", "what could this break", "premortem", "impact analysis", "dependency check".
+
+Implicit, trigger even unasked: about to ship a change that touches shared state, storage or quotas, concurrency, auth/permissions, money, or a public API/route.
+
+Does not trigger for pure personal, business, or life-planning questions. See Scope below.
+
+## Step 0: Classify the request
+
+One line. Is this (a) a new feature or change to make, (b) an audit of code that already exists, or (c) a conceptual/product decision with no code yet? This decides whether Step 2 (real tracing) is even possible. Say so if it isn't.
+
+## Step 1: Four-lens interrogation
+
+Before touching code, read the request four ways. Write all four, briefly:
+
+1. **Literal**: exactly what was asked, restated in one line.
+2. **Inverse**: the opposite assumption. What if the stated premise is false, or what's the one input or condition that breaks this?
+3. **Adjacent**: the two or three questions a senior engineer would ask next that weren't asked. Parallel questions, not follow-ups to the literal one.
+4. **Reframed**: the clearest way this request could have been phrased. Answer that version too if it differs from the literal one.
+
+## Step 2: Ground the dependency map in the real code (mandatory)
+
+Never produce an impact map from memory or plausible-sounding guessing. If bash or repo access exists, actually search:
+
+- Universal first move: `rg -n "<symbol/route/table name>"` (or `grep -rn` if ripgrep is unavailable) across the whole repo for every call site, not just the file being edited.
+- JS/TS: check `package.json`. Search import statements of the touched module (`rg "from ['\"].*<module>"`). Use `madge` if installed for a visual graph.
+- Python: check `requirements.txt` or `pyproject.toml`. Search `rg "import <module>|from <module> import"`.
+- Swift/Xcode: `rg "<TypeName|functionName>" --type swift`. Check `Package.swift` or the `.xcodeproj` references.
+- Database/schema change: search migrations plus every model or query referencing the table/column.
+- API/route change: search both the backend route definition and every frontend call site of that path.
+- Config/env change: search `.env.example`, CI configs, and deploy scripts for the key.
+
+If there is no repo access, or the code doesn't exist yet (pure conceptual request), say so explicitly and label the impact map "non vérifié / spéculatif" instead of presenting a guess as a finding. This rule is not optional. It's the entire point of the skill.
+
+## Step 3: Impact-surface checklist
+
+Run every change past this list. Mark each category applicable or not applicable explicitly, don't skip silently:
+
+1. **Data and state**: new or changed field, table, or shared object other code reads?
+2. **Concurrency**: can two of these happen at once on the same resource? What happens?
+3. **Resource limits and quotas**: is there a cap (storage, rate, size, count) this can hit, and what happens at the boundary?
+4. **Security and access control**: who can trigger this, and can they trigger it against someone else's resource?
+5. **Error handling and partial failure**: if it fails halfway, what state is left behind, and is it recoverable?
+6. **Backward compatibility**: does old data or old client code still work after this ships?
+7. **Performance at scale**: still fast at 10x or 100x current volume?
+8. **Cost**: does this create ongoing cost (storage, compute, egress) that scales with usage?
+9. **Observability**: would you know this broke in production without the user telling you?
+10. **UX edge cases**: empty state, oversized input, duplicate action, slow or offline network?
+11. **Tests**: is there a test that would catch a regression here specifically?
+12. **Rollback**: if this ships broken, how does it get turned off fast?
+
+## Step 4: Forgotten-questions pass
+
+From Steps 1 to 3, compile the open questions nobody asked yet, each with a recommended default so the user can approve by silence instead of answering every one.
+
+## Output format
+
+Compact, not an essay. Structure:
+
+```
+Ce qui est fait/proposé : 1 à 3 lignes.
+Vérifié dans le code : fichiers/fonctions réels trouvés à l'étape 2 (ou "non vérifié" + raison).
+Angles morts : Literal / Inverse / Adjacent / Reframed, une ligne chacun.
+Surface d'impact : tableau ou liste courte, seulement les catégories applicables de l'étape 3.
+Questions ouvertes : numérotées, chacune avec un défaut recommandé.
+```
+
+Write the deliverable in the language of the conversation. French by default on this account.
+
+## Scope and anti-goals
+
+Applies to code, architecture, and product-feature decisions. Does not apply to personal or business-strategy planning. This account has a standing rule capping advice to a 48h to 7 day horizon with no unsolicited grand plans. This skill does not override that, and should not be used to produce a master plan for life or business topics.
+
+Self-scaling: a one-line style or copy change doesn't need the full pass. Say so and mark most categories N/A rather than padding. Reserve the full pass for changes touching shared state, storage, concurrency, auth, money, or public APIs.
+
+Not a substitute for tests, CI, or formal verification. This catches known failure classes. It doesn't guarantee catching novel ones. Say that plainly instead of implying completeness.
